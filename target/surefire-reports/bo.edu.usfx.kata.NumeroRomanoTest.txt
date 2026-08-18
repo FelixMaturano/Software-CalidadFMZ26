@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: bo.edu.usfx.tdd.PalindromoTest
+Test set: bo.edu.usfx.kata.NumeroRomanoTest
 -------------------------------------------------------------------------------
-Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s -- in bo.edu.usfx.tdd.PalindromoTest
+Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.288 s -- in bo.edu.usfx.kata.NumeroRomanoTest

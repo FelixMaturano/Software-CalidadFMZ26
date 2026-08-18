@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NumeroRomano.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tddpalindromo</a> &gt; <a href="index.source.html" class="el_package">bo.edu.usfx.kata</a> &gt; <span class="el_source">NumeroRomano.java</span></div><h1>NumeroRomano.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package bo.edu.usfx.kata;
+
+/**
+ *
+ * @author Ruta Binar
+ */
+<span class="nc" id="L11">public class NumeroRomano {</span>
+
+    public static String convertir(int numero) {
+        // Ciclo 10: Validación de rango (Atrapamos los errores antes de empezar)
+<span class="fc bfc" id="L15" title="All 4 branches covered.">        if (numero &lt; 1 || numero &gt; 3999) {</span>
+<span class="fc" id="L16">            throw new IllegalArgumentException(&quot;El numero debe estar entre 1 y 3999&quot;);</span>
+        }
+
+        // Definimos todos nuestros bloques de construcción, incluyendo las reglas sustractivas (4, 9, 40, etc.)
+<span class="fc" id="L20">        int[] valores = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};</span>
+<span class="fc" id="L21">        String[] simbolos = {&quot;M&quot;, &quot;CM&quot;, &quot;D&quot;, &quot;CD&quot;, &quot;C&quot;, &quot;XC&quot;, &quot;L&quot;, &quot;XL&quot;, &quot;X&quot;, &quot;IX&quot;, &quot;V&quot;, &quot;IV&quot;, &quot;I&quot;};</span>
+
+<span class="fc" id="L23">        StringBuilder romano = new StringBuilder();</span>
+
+        // Recorremos cada valor de mayor a menor
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        for (int i = 0; i &lt; valores.length; i++) {</span>
+            // Mientras el número siga siendo mayor o igual al valor que estamos revisando...
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            while (numero &gt;= valores[i]) {</span>
+<span class="fc" id="L29">                romano.append(simbolos[i]); // Anotamos su símbolo romano</span>
+<span class="fc" id="L30">                numero = numero - valores[i]; // Le restamos el valor (Igual que hicimos con el 5)</span>
+            }
+        }
+
+<span class="fc" id="L34">        return romano.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Palindromo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tddpalindromo</a> &gt; <a href="index.source.html" class="el_package">bo.edu.usfx.tdd</a> &gt; <span class="el_source">Palindromo.java</span></div><h1>Palindromo.java</h1><pre class="source lang-java linenums">package bo.edu.usfx.tdd;
 
-<span class="nc" id="L3">public class Palindromo {</span>
+import java.text.Normalizer;
+
+/**
+ * Verificador de palindromos construido con TDD. Cada linea de esta clase
+ * existe porque una prueba la exigio.
+ */
+public final class Palindromo {
+
+    private Palindromo() {
+// clase de utilidad: no se instancia
+    }
+
     public static boolean esPalindromo(String texto) {
-<span class="pc bpc" id="L5" title="1 of 2 branches missed.">        if (texto == null) {</span>
-<span class="nc" id="L6">            return false;</span>
+<span class="fc bfc" id="L16" title="All 2 branches covered.">        if (texto == null) {</span>
+<span class="fc" id="L17">            throw new IllegalArgumentException(&quot;El texto no puede ser null&quot;);</span>
         }
-        // Quita espacios en blanco y convierte todo a minúsculas
-<span class="fc" id="L9">        String limpio = texto.replaceAll(&quot;\\s+&quot;, &quot;&quot;).toLowerCase();</span>
-<span class="fc" id="L10">        String invertido = new StringBuilder(limpio).reverse().toString();</span>
-        
-<span class="fc" id="L12">        return limpio.equals(invertido);</span>
+<span class="fc" id="L19">        String limpio = normalizar(texto);</span>
+<span class="fc" id="L20">        return limpio.contentEquals(new StringBuilder(limpio).reverse());</span>
+    }
+
+    /**
+     * Quita tildes, mayusculas, espacios y puntuacion.
+     */
+    private static String normalizar(String texto) {
+<span class="fc" id="L27">        String sinTildes = Normalizer</span>
+<span class="fc" id="L28">                .normalize(texto, Normalizer.Form.NFD)</span>
+<span class="fc" id="L29">                .replaceAll(&quot;\\p{M}&quot;, &quot;&quot;);</span>
+<span class="fc" id="L30">        return sinTildes.toLowerCase().replaceAll(&quot;[^a-z0-9]&quot;, &quot;&quot;);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

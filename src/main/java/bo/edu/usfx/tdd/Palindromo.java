@@ -1,14 +1,32 @@
 package bo.edu.usfx.tdd;
 
-public class Palindromo {
+import java.text.Normalizer;
+
+/**
+ * Verificador de palindromos construido con TDD. Cada linea de esta clase
+ * existe porque una prueba la exigio.
+ */
+public final class Palindromo {
+
+    private Palindromo() {
+// clase de utilidad: no se instancia
+    }
+
     public static boolean esPalindromo(String texto) {
         if (texto == null) {
-            return false;
+            throw new IllegalArgumentException("El texto no puede ser null");
         }
-        // Quita espacios en blanco y convierte todo a minúsculas
-        String limpio = texto.replaceAll("\\s+", "").toLowerCase();
-        String invertido = new StringBuilder(limpio).reverse().toString();
-        
-        return limpio.equals(invertido);
+        String limpio = normalizar(texto);
+        return limpio.contentEquals(new StringBuilder(limpio).reverse());
+    }
+
+    /**
+     * Quita tildes, mayusculas, espacios y puntuacion.
+     */
+    private static String normalizar(String texto) {
+        String sinTildes = Normalizer
+                .normalize(texto, Normalizer.Form.NFD)
+                .replaceAll("\\p{M}", "");
+        return sinTildes.toLowerCase().replaceAll("[^a-z0-9]", "");
     }
 }

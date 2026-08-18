@@ -1,3 +1,4 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-tddpalindromo,bo.edu.usfx.tdd,Palindromo,5,19,1,1,2,4,2,1,1,1
+tddpalindromo,bo.edu.usfx.kata,NumeroRomano,3,154,0,8,1,10,1,5,1,1
+tddpalindromo,bo.edu.usfx.tdd,Palindromo,0,31,0,2,0,8,0,3,0,2
 tddpalindromo,bo.edu.usfx.tdd,Tddpalindromo,7,0,0,0,3,0,2,0,2,0
